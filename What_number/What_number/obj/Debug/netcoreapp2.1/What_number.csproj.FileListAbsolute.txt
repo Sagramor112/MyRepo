@@ -1,0 +1,11 @@
+/home/mikolaj/RiderProjects/What_number/What_number/bin/Debug/netcoreapp2.1/What_number.deps.json
+/home/mikolaj/RiderProjects/What_number/What_number/bin/Debug/netcoreapp2.1/What_number.runtimeconfig.json
+/home/mikolaj/RiderProjects/What_number/What_number/bin/Debug/netcoreapp2.1/What_number.runtimeconfig.dev.json
+/home/mikolaj/RiderProjects/What_number/What_number/bin/Debug/netcoreapp2.1/What_number.dll
+/home/mikolaj/RiderProjects/What_number/What_number/bin/Debug/netcoreapp2.1/What_number.pdb
+/home/mikolaj/RiderProjects/What_number/What_number/obj/Debug/netcoreapp2.1/What_number.csprojAssemblyReference.cache
+/home/mikolaj/RiderProjects/What_number/What_number/obj/Debug/netcoreapp2.1/What_number.csproj.CoreCompileInputs.cache
+/home/mikolaj/RiderProjects/What_number/What_number/obj/Debug/netcoreapp2.1/What_number.AssemblyInfoInputs.cache
+/home/mikolaj/RiderProjects/What_number/What_number/obj/Debug/netcoreapp2.1/What_number.AssemblyInfo.cs
+/home/mikolaj/RiderProjects/What_number/What_number/obj/Debug/netcoreapp2.1/What_number.dll
+/home/mikolaj/RiderProjects/What_number/What_number/obj/Debug/netcoreapp2.1/What_number.pdb
