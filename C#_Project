@@ -1,0 +1,259 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Programming_Project
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int menu, fin = 1, width, height, x, y, color, val;
+            List<recto> picturerect = new List<recto>();
+            List<trian> picturetria = new List<trian>();
+            picturerect.Add(new recto() { x = 27, y = 38, width = 12, height = 4, color = 1 });
+            picturerect.Add(new recto() { x = 38, y = 24, width = 6, height = 4, color = 2 });
+            picturerect.Add(new recto() { x = 20, y = 16, width = 8, height = 16, color = 3 });
+            picturetria.Add(new trian() { x = 69, y = 22, val = 8, color = 6 });
+            picturetria.Add(new trian() { x = 77, y = 32, val = 10, color = 5 });
+            do
+            {
+                Console.Clear();
+                Console.Write("1. Add rectangle\n2. Add triangle\n3. Remove rectangle\n4. Remove triangle\n5. Draw picture\n6. Finish\nEnter number:\n");
+                while (!int.TryParse(Console.ReadLine(), out menu))
+                {
+                    Console.WriteLine("That was invalid. Enter a NUMBER from the list!");
+                }
+                Console.Clear();
+                switch (menu)
+                {
+                    case 1:
+                        Console.WriteLine("Please give me width and height, screen position (x and y) and a color from the list for this rectangle\n");
+                        Console.Write("Enter width:\n");
+                        width = int.Parse(Console.ReadLine());
+                        Console.Write("Enter height:\n");
+                        height = int.Parse(Console.ReadLine());
+                        Console.Write("Enter x:\n");
+                        x = int.Parse(Console.ReadLine());
+                        Console.Write("Enter y:\n");
+                        y = int.Parse(Console.ReadLine());
+                        Console.Write("Enter color:\n1. Blue \n2. Yellow \n3. Red \n4. Green \n5. Cyan \n6. White \n");
+                        color = int.Parse(Console.ReadLine());
+                        Console.Clear();
+                        recto rect = new recto(x, y, width, height, color);
+                        rect.draw();
+                        picturerect.Add(rect);
+                        Console.WriteLine("\n");
+                        Console.WriteLine("\n\nAdding succeeded\n");
+                        Console.ReadKey();
+                        break;
+                    case 2:
+                        Console.WriteLine("Please give me length of the side, position on the screen (x and y) and a color from the list for this triangle\n");
+                        Console.Write("Enter length of the side:\n");
+                        val = int.Parse(Console.ReadLine());
+                        Console.Write("Enter x:\n");
+                        x = int.Parse(Console.ReadLine());
+                        Console.Write("Enter y:\n");
+                        y = int.Parse(Console.ReadLine());
+                        Console.Write("Enter color:\n1. Blue \n2. Yellow \n3. Red \n4. Green \n5. Cyan \n6. White \n");
+                        color = int.Parse(Console.ReadLine());
+                        Console.Clear();
+                        trian tria = new trian(x, y, val, color);
+                        tria.draw();
+                        picturetria.Add(tria);
+                        Console.WriteLine("\n");
+                        Console.WriteLine("Adding succeeded\n");
+                        Console.ReadKey();
+                        break;
+                    case 3:
+                        Console.WriteLine("Which rectangle to remove? Please give index from 0 to 7.\n");
+                        int r1;
+                        Console.Write("Enter index:\n");
+                        r1 = int.Parse(Console.ReadLine());
+                        picturerect.RemoveAt(r1);
+                        Console.ReadKey();
+                        break;
+                    case 4:
+                        Console.WriteLine("Which triangle to remove? Please give index from 0 to 7.\n");
+                        int t1;
+                        Console.Write("Enter index:\n");
+                        t1 = int.Parse(Console.ReadLine());
+                        picturetria.RemoveAt(t1);
+                        Console.ReadKey();
+                        break;
+                    case 5:
+                        Console.WriteLine("Drawing picture\n");
+                        foreach (recto dana in picturerect)
+                        {
+                            dana.draw();
+                        }
+                        foreach (trian dana in picturetria)
+                        {
+                            dana.draw();
+                        }
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 6:
+                        Console.WriteLine("Goodbye");
+                        fin = 0;
+                        break;
+                    default:
+                        Console.WriteLine("Choose number from the list, come on man...");
+                        Console.ReadKey();
+                        break;
+                }
+            } while (fin == 1);
+        }
+
+        public class recto
+        {
+            public int x;
+            public int y;
+            public int width;
+            public int height;
+            public int color;
+            public recto()
+            {
+                x = 15;
+                y = 10;
+                width = 15;
+                height = 5;
+                color = 3;
+            }
+            public recto(int _x, int _y, int _width, int _height, int _color)
+            {
+                x = _x;
+                y = _y;
+                width = _width;
+                height = _height;
+                color = _color;
+            }
+            public void draw()
+            {
+                switch (color)
+                {
+                    case 1:
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        break;
+                    case 2:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        break;
+                    case 3:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        break;
+                    case 4:
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        break;
+                    case 5:
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        break;
+                    case 6:
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                }
+                string line = "*";
+                Console.SetCursorPosition(x, y);
+                Console.WriteLine(line);
+                line = "*"; ;
+                Console.SetCursorPosition(x + width + 1, y);
+                Console.WriteLine(line);
+                line = "*";
+                Console.SetCursorPosition(x, y + height);
+                Console.WriteLine(line);
+                line = "*";
+                Console.SetCursorPosition(x + width + 1, y + height);
+                Console.WriteLine(line);
+                string horizontalBar = new string('*', width);
+                Console.SetCursorPosition(x + 1, y);
+                Console.WriteLine(horizontalBar);
+                Console.SetCursorPosition(x + 1, y + height);
+                Console.WriteLine(horizontalBar);
+                string vertBar = "*";
+                for (int i = 1; i < height; i++)
+                {
+                    Console.SetCursorPosition(x, y + i);
+                    Console.WriteLine(vertBar);
+                    Console.SetCursorPosition(x + width + 1, y + i);
+                    Console.WriteLine(vertBar);
+                }
+                Console.ResetColor();
+            }
+        }
+
+        public class trian
+        {
+            public int x;
+            public int y;
+            public int val;
+            public int color;
+
+            public trian()
+            {
+                x = 28;
+                y = 67;
+                val = 11;
+                color = 2;
+            }
+            public trian(int _x, int _y, int _val, int _color)
+            {
+                x = _x;
+                y = _y;
+                val = _val;
+                color = _color;
+            }
+            public void draw()
+            {
+                switch (color)
+                {
+                    case 1:
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        break;
+                    case 2:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        break;
+                    case 3:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        break;
+                    case 4:
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        break;
+                    case 5:
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        break;
+                    case 6:
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                }
+                Console.WriteLine("\n");
+                Console.SetCursorPosition(x, y);
+                Console.Write("*");
+                Console.Write("\n");
+                int i, j;
+                Console.SetCursorPosition(x, y-1);
+                for (i = 0; i <= val - 2; i++)
+                {
+                    Console.SetCursorPosition(x, y--);
+                    Console.Write("*");
+                    for (j = 1; j <= i; j++)
+                    {
+                        Console.Write(" ");
+                    }
+                    Console.Write("*");
+                    Console.Write("\n");
+                }
+                Console.SetCursorPosition(x, y--);
+                for (i = 0; i <= val-1; i++)
+                {
+                    Console.Write("*");
+                }
+                Console.ResetColor();
+            }
+
+        }
+
+    }
+}
