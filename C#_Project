@@ -14,12 +14,12 @@ namespace Programming_Project
             int menu, fin = 1, width, height, x, y, color, val;
             List<recto> picturerect = new List<recto>();
             List<trian> picturetria = new List<trian>();
-            picturerect.Add(new recto() {x = 27, y = 52, width = 12, height = 4, color = 1 });
+            picturerect.Add(new recto() { x = 27, y = 52, width = 12, height = 4, color = 1 });
             picturerect.Add(new recto() { x = 38, y = 24, width = 6, height = 6, color = 2 });
             picturerect.Add(new recto() { x = 20, y = 16, width = 8, height = 16, color = 3 });
             picturerect.Add(new recto() { x = 11, y = 5, width = 13, height = 18, color = 4 });
             picturetria.Add(new trian() { x = 67, y = 22, val = 8, color = 6 });
-            picturetria.Add(new trian() { x = 1, y = 1, val = 10, color = 5 });
+            picturetria.Add(new trian() { x = 66, y = 34, val = 10, color = 5 });
             do
             {
                 Console.Clear();
@@ -70,14 +70,16 @@ namespace Programming_Project
                         Console.ReadKey();
                         break;
                     case 3:
-                        Console.WriteLine("Which rectangle to remove? Please give index from 0 to 7.\n");
+                        var rectCount = picturerect.Count;
+                        Console.WriteLine("Which rectangle to remove? Max index is:\n"); Console.Write(rectCount-1); Console.WriteLine(" \n");
                         int r1;
                         Console.Write("Enter index:\n");
                         r1 = int.Parse(Console.ReadLine());
                         picturerect.RemoveAt(r1);
                         break;
                     case 4:
-                        Console.WriteLine("Which triangle to remove? Please give index from 0 to 7.\n");
+                        var triaCount = picturetria.Count;
+                        Console.WriteLine("Which rectangle to remove? Max index is:\n"); Console.Write(triaCount - 1); Console.WriteLine(" \n");
                         int t1;
                         Console.Write("Enter index:\n");
                         t1 = int.Parse(Console.ReadLine());
@@ -246,4 +248,5 @@ namespace Programming_Project
 
     }
 }
+
 
